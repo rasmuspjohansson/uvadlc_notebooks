@@ -1,0 +1,3 @@
+mamba install -c pytorch pytorch
+mamba install jupyter notebook
+conda install -c conda-forge seaborn
