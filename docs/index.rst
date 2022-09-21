@@ -12,9 +12,14 @@ Welcome to the UvA Deep Learning Tutorials!
 | *Recordings*: `YouTube Playlist <https://www.youtube.com/playlist?list=PLdlPlO1QhMiAkedeu0aJixfkknLRxk1nA>`_
 | *Author*: Phillip Lippe
 
+.. note::
+   Interested in learning JAX? We have recently started translating the notebooks from PyTorch to JAX+Flax. Check out our new notebooks in the tab *Deep Learning 1 (JAX+Flax)* to learn how you can speedup the model training with JAX!
+
+
 For this year's course edition, we created a series of Jupyter notebooks that are designed to help you understanding the "theory" from the lectures by seeing corresponding implementations.
 We will visit various topics such as optimization techniques, transformers, graph neural networks, and more (for a full list, see below).
 The notebooks are there to help you understand the material and teach you details of the PyTorch framework, including PyTorch Lightning.
+Further, we provide one-to-one translations of the notebooks to JAX+Flax as alternative framework.
 
 The notebooks are presented in the first hour of every group tutorial session.
 During the tutorial sessions, we will present the content and explain the implementation of the notebooks.
@@ -41,11 +46,11 @@ Schedule (Deep Learning 1)
 +------------------------------------------+---------------------------------------------------+
 | Thursday, 25. November 2021, 13.00-14.00 | Tutorial 5: Inception, ResNet and DenseNet        |
 +------------------------------------------+---------------------------------------------------+
-| Thursday, 2. December 2020, 13.00-14.00  | Tutorial 7: Graph Neural Networks                 |
+| Thursday, 2. December 2021, 13.00-14.00  | Tutorial 7: Graph Neural Networks                 |
 +------------------------------------------+---------------------------------------------------+
-| Thursday, 9. December 2020, 13.00-14.00  | Tutorial 6: Transformers and Multi-Head Attention |
+| Thursday, 9. December 2021, 13.00-14.00  | Tutorial 6: Transformers and Multi-Head Attention |
 +------------------------------------------+---------------------------------------------------+
-| Thursday, 16. December 2020, 13.00-14.00 | Tutorial 9: Deep Autoencoders                     |
+| Thursday, 16. December 2021, 13.00-14.00 | Tutorial 9: Deep Autoencoders                     |
 +------------------------------------------+---------------------------------------------------+
 
 How to run the notebooks
@@ -54,11 +59,11 @@ How to run the notebooks
 On this website, you will find the notebooks exported into a HTML format so that you can read them from whatever device you prefer.
 However, we suggest that you also give them a try and run them yourself. There are three main ways of running the notebooks we recommend:
 
-- **Locally on CPU**: All notebooks are stored on the github repository that also builds this website. You can find them here: https://github.com/phlippe/uvadlc_notebooks/tree/master/docs/tutorial_notebooks. The notebooks are designed that you can execute them on common laptops without the necessity of a GPU. We provide pretrained models that are automatically downloaded when running the notebooks, or can manually be downloaoded from this `Google Drive <https://drive.google.com/drive/folders/1SevzqrkhHPAifKEHo-gi7J-dVxifvs4c?usp=sharing>`_. The required disk space for the pretrained models and datasets is less than 1GB. To ensure that you have all the right python packages installed, we provide a conda environment in the `same repository <https://github.com/uvadlc/uvadlc_practicals_2020/blob/master/environment.yml>`_ (choose the CPU or GPU version depending on your system).
+- **Locally on CPU**: All notebooks are stored on the github repository that also builds this website. You can find them here: https://github.com/phlippe/uvadlc_notebooks/tree/master/docs/tutorial_notebooks. The notebooks are designed so that you can execute them on common laptops without the necessity of a GPU. We provide pretrained models that are automatically downloaded when running the notebooks, or can manually be downloaded from this `Google Drive <https://drive.google.com/drive/folders/1SevzqrkhHPAifKEHo-gi7J-dVxifvs4c?usp=sharing>`_. The required disk space for the pretrained models and datasets is less than 1GB. To ensure that you have all the right python packages installed, we provide a conda environment in the `same repository <https://github.com/uvadlc/uvadlc_practicals_2020/blob/master/environment.yml>`_ (choose the CPU or GPU version depending on your system).
 
 - **Google Colab**: If you prefer to run the notebooks on a different platform than your own computer, or want to experiment with GPU support, we recommend using `Google Colab <https://colab.research.google.com/notebooks/intro.ipynb#recent=true>`_. Each notebook on this documentation website has a badge with a link to open it on Google Colab. Remember to enable GPU support before running the notebook (:code:`Runtime -> Change runtime type`). Each notebook can be executed independently, and doesn't require you to connect your Google Drive or similar. However, when closing the session, changes might be lost if you don't save it to your local computer or have copied the notebook to your Google Drive beforehand.
 
-- **Lisa cluster**: If you want to train your own (larger) neural networks based on the notebooks, you can make use of the Lisa cluster. However, this is only suggested if you really want to train a new model, and use the other two options to go through the discussion and analysis of the models. Lisa might not allow you with your student account to run jupyter notebooks directly on the gpu_shared partition. Instead, you can first convert the notebooks to a script using :code:`jupyter nbconvert --to script ...ipynb`, and then start a job on Lisa for running the script. A few advices when running on Lisa:
+- **Lisa cluster**: If you want to train your own (larger) neural networks based on the notebooks, you can make use of the Lisa cluster. However, this is only suggested if you really want to train a new model, and use the other two options to go through the discussion and analysis of the models. Lisa might not allow you with your student account to run Jupyter notebooks directly on the gpu_shared partition. Instead, you can first convert the notebooks to a script using :code:`jupyter nbconvert --to script ...ipynb`, and then start a job on Lisa for running the script. A few advices when running on Lisa:
 
    - Disable the tqdm statements in the notebook. Otherwise your slurm output file might overflow and be several MB large. In PyTorch Lightning, you can do this by setting :code:`progress_bar_refresh_rate=0` in the trainer.
    - Comment out the matplotlib plotting statements, or change :code:`plt.show()` to :code:`plt.savefig(...)`.
@@ -90,6 +95,15 @@ Feedback, Questions or Contributions
 
 This is the first time we present these tutorials during the Deep Learning course. As with any other project, small bugs and issues are expected. We appreciate any feedback from students, whether it is about a spelling mistake, implementation bug, or suggestions for improvements/additions to the notebooks. Please use the following `link <https://forms.gle/kENuNvcCq3LzQWDA8>`_ to submit feedback, or feel free to reach out to me directly per mail (p dot lippe at uva dot nl), or grab me during any TA session.
 
+If you find the tutorials helpful and would like to cite them, you can use the following bibtex::
+
+   @misc{lippe2022uvadlc,
+      title        = {{UvA Deep Learning Tutorials}},
+      author       = {Phillip Lippe},
+      year         = 2022,
+      howpublished = {\url{https://uvadlc-notebooks.readthedocs.io/en/latest/}}
+   }
+
 
 .. toctree::
    :caption: Guides
@@ -98,9 +112,10 @@ This is the first time we present these tutorials during the Deep Learning cours
    tutorial_notebooks/tutorial1/Lisa_Cluster
    tutorial_notebooks/guide2/Research_Projects
    tutorial_notebooks/guide3/Debugging_PyTorch
+   tutorial_notebooks/guide4/Research_Projects_with_JAX
 
 .. toctree::
-   :caption: Deep Learning 1
+   :caption: Deep Learning 1 (PyTorch)
    :maxdepth: 2
 
    tutorial_notebooks/tutorial2/Introduction_to_PyTorch
@@ -117,6 +132,22 @@ This is the first time we present these tutorials during the Deep Learning cours
    tutorial_notebooks/tutorial15/Vision_Transformer
    tutorial_notebooks/tutorial16/Meta_Learning
    tutorial_notebooks/tutorial17/SimCLR
+
+.. toctree::
+   :caption: Deep Learning 1 (JAX+Flax)
+   :maxdepth: 2
+
+   tutorial_notebooks/JAX/tutorial2/Introduction_to_JAX
+   tutorial_notebooks/JAX/tutorial3/Activation_Functions
+   tutorial_notebooks/JAX/tutorial4/Optimization_and_Initialization
+   tutorial_notebooks/JAX/tutorial5/Inception_ResNet_DenseNet
+   tutorial_notebooks/JAX/tutorial6/Transformers_and_MHAttention
+   tutorial_notebooks/JAX/tutorial7/GNN_overview
+   tutorial_notebooks/JAX/tutorial9/AE_CIFAR10
+   tutorial_notebooks/JAX/tutorial11/NF_image_modeling
+   tutorial_notebooks/JAX/tutorial12/Autoregressive_Image_Modeling
+   tutorial_notebooks/JAX/tutorial15/Vision_Transformer
+   tutorial_notebooks/JAX/tutorial17/SimCLR
 
 .. toctree::
    :caption: Deep Learning 2
